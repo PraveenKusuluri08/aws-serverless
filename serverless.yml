@@ -1,0 +1,51 @@
+org: praveen08
+app: aws-nodejs-http
+service: aws-serveless-no-framework
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  hello:
+    handler: handler.hello
+  create:
+    handler: handler.create
+    events:
+      - http:
+          path: /api/createtodo
+          method: POST
+          cors: true
+
+  getOne:
+    handler: handler.getOne
+    events:
+      - http:
+          path: /api/getone
+          method: GET
+          cors: true
+
+  getAllTodos:
+    handler: handler.getAllTodos
+    events:
+      - http:
+          path: /api/getalltodos
+          method: GET
+          cors: true
+  updateTodo:
+    handler: handler.updateTodo
+    events:
+      - http:
+          path: /api/updatetodo
+          method: PUT
+          cors: true
+
+  deleteTodo:
+    handler: handler.deleteTodo
+    events:
+      - http:
+          path: /api/deletetodo
+          method: DELETE
+          cors: true
